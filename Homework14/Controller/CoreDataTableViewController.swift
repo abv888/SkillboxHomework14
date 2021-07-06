@@ -75,7 +75,7 @@ class CoreDataTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
-        cell.backgroundColor = UIColor.lightGray
+        cell.backgroundColor = .lightGray
         let newTask2 = tasks[indexPath.row]
         cell.textLabel?.text = newTask2.text
         cell.accessoryType = newTask2.isCompleted ? .checkmark : .none

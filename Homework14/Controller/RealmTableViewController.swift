@@ -6,84 +6,95 @@
 //
 
 import UIKit
+import RealmSwift
+
+class TaskR: Object {
+    @objc dynamic var task: String = ""
+    @objc dynamic var isCompleted = false
+}
 
 class RealmTableViewController: UITableViewController {
+    
+    private let cellID = "realmCell"
+    private var realm: Realm!
+    
+    private var toDoList: Results<TaskR> {
+        get {
+            return realm.objects(TaskR.self)
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        realm = try! Realm()
     }
     
     private func setupView() {
         view.backgroundColor = .lightGray
         title = "Realm"
+        navigationItem.backBarButtonItem?.tintColor = UIColor.white
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellID)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButton(_:)))
+    }
+    
+    @objc func addButton(_ sender: Any) {
+        let alertVC = UIAlertController(title: "Новое дело!", message: "Что Вам нужно сделать?", preferredStyle: .alert)
+        alertVC.addTextField { (UITextField) in}
+        let cancelAction = UIAlertAction.init(title: "Отмена", style: .destructive, handler: nil)
+        alertVC.addAction(cancelAction)
+        let addAction = UIAlertAction.init(title: "Добавить", style: .default) { (UIAlertAction) -> Void in
+            let toDoTextField = (alertVC.textFields?.first)! as UITextField
+            let newTask = TaskR()
+            newTask.task = toDoTextField.text!
+            newTask.isCompleted = false
+            try! self.realm.write({
+                self.realm.add(newTask)
+                self.tableView.insertRows(at: [IndexPath.init(row: self.toDoList.count - 1, section: 0)], with: .automatic)
+            })
+        }
+        alertVC.addAction(addAction)
+        present(alertVC, animated: true, completion: nil)
+        self.tableView.reloadData()
     }
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return toDoList.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
+        cell.backgroundColor = .lightGray
+        let currentTask = toDoList[indexPath.row]
+        cell.textLabel?.text = currentTask.task
+        cell.accessoryType = currentTask.isCompleted == true ? .checkmark : .none
 
         return cell
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
+    
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
         return true
     }
-    */
-
-    /*
-    // Override to support editing the table view.
+    
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+            let currentTask = toDoList[indexPath.row]
+            try! self.realm.write({
+                self.realm.delete(currentTask)
+            })
+            self.tableView.deleteRows(at: [indexPath], with: .fade)
+        }
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let currentTask = toDoList[indexPath.row]
+        try! self.realm.write({
+            currentTask.isCompleted = !currentTask.isCompleted
+        })
+        tableView.reloadRows(at: [indexPath], with: .automatic)
     }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
 }

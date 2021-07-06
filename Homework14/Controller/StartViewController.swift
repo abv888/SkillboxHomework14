@@ -42,6 +42,7 @@ class StartViewController: UIViewController {
     private func setupNavigation() {
         navigationController?.navigationBar.barTintColor = .darkGray
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+        navigationController?.navigationBar.tintColor = .white
     }
     
     private func setupButtons(buttons: [UIButton]) {
