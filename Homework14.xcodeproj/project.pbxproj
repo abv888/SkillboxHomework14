@@ -13,12 +13,13 @@
 		B770621A2694744A0008E644 /* Homework14.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B77062182694744A0008E644 /* Homework14.xcdatamodeld */; };
 		B770621C2694744C0008E644 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B770621B2694744C0008E644 /* Assets.xcassets */; };
 		B770621F2694744C0008E644 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B770621D2694744C0008E644 /* LaunchScreen.storyboard */; };
-		B77062272694A86D0008E644 /* UserDefaultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77062262694A86D0008E644 /* UserDefaultsTableViewController.swift */; };
+		B77062272694A86D0008E644 /* UserDefaultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77062262694A86D0008E644 /* UserDefaultsViewController.swift */; };
 		B77062292694A87B0008E644 /* RealmTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77062282694A87B0008E644 /* RealmTableViewController.swift */; };
 		B770622B2694A8900008E644 /* CoreDataTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B770622A2694A8900008E644 /* CoreDataTableViewController.swift */; };
 		B770622D2694A89F0008E644 /* WeatherTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B770622C2694A89F0008E644 /* WeatherTableViewController.swift */; };
 		B77062332694A9570008E644 /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77062322694A9570008E644 /* DataLoader.swift */; };
 		B77062352694A9670008E644 /* RequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77062342694A9670008E644 /* RequestModel.swift */; };
+		B77062372694E31D0008E644 /* UserDefaultsPesistanceContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77062362694E31D0008E644 /* UserDefaultsPesistanceContainer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,12 +31,13 @@
 		B770621B2694744C0008E644 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B770621E2694744C0008E644 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B77062202694744C0008E644 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B77062262694A86D0008E644 /* UserDefaultsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsTableViewController.swift; sourceTree = "<group>"; };
+		B77062262694A86D0008E644 /* UserDefaultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsViewController.swift; sourceTree = "<group>"; };
 		B77062282694A87B0008E644 /* RealmTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmTableViewController.swift; sourceTree = "<group>"; };
 		B770622A2694A8900008E644 /* CoreDataTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataTableViewController.swift; sourceTree = "<group>"; };
 		B770622C2694A89F0008E644 /* WeatherTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTableViewController.swift; sourceTree = "<group>"; };
 		B77062322694A9570008E644 /* DataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoader.swift; sourceTree = "<group>"; };
 		B77062342694A9670008E644 /* RequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestModel.swift; sourceTree = "<group>"; };
+		B77062362694E31D0008E644 /* UserDefaultsPesistanceContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsPesistanceContainer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 				B77062302694A8F80008E644 /* Controller */,
 				B77062312694A9200008E644 /* Network */,
 				B770620F2694744A0008E644 /* AppDelegate.swift */,
+				B77062362694E31D0008E644 /* UserDefaultsPesistanceContainer.swift */,
 				B77062112694744A0008E644 /* SceneDelegate.swift */,
 				B770621B2694744C0008E644 /* Assets.xcassets */,
 				B770621D2694744C0008E644 /* LaunchScreen.storyboard */,
@@ -101,7 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				B77062132694744A0008E644 /* StartViewController.swift */,
-				B77062262694A86D0008E644 /* UserDefaultsTableViewController.swift */,
+				B77062262694A86D0008E644 /* UserDefaultsViewController.swift */,
 				B77062282694A87B0008E644 /* RealmTableViewController.swift */,
 				B770622A2694A8900008E644 /* CoreDataTableViewController.swift */,
 				B770622C2694A89F0008E644 /* WeatherTableViewController.swift */,
@@ -190,9 +193,10 @@
 				B770621A2694744A0008E644 /* Homework14.xcdatamodeld in Sources */,
 				B77062142694744A0008E644 /* StartViewController.swift in Sources */,
 				B77062102694744A0008E644 /* AppDelegate.swift in Sources */,
+				B77062372694E31D0008E644 /* UserDefaultsPesistanceContainer.swift in Sources */,
 				B770622D2694A89F0008E644 /* WeatherTableViewController.swift in Sources */,
 				B77062352694A9670008E644 /* RequestModel.swift in Sources */,
-				B77062272694A86D0008E644 /* UserDefaultsTableViewController.swift in Sources */,
+				B77062272694A86D0008E644 /* UserDefaultsViewController.swift in Sources */,
 				B77062122694744A0008E644 /* SceneDelegate.swift in Sources */,
 				B77062292694A87B0008E644 /* RealmTableViewController.swift in Sources */,
 				B77062332694A9570008E644 /* DataLoader.swift in Sources */,

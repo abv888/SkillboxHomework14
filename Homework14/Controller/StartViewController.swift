@@ -11,7 +11,7 @@ class StartViewController: UIViewController {
     
     // MARK: - View controllers
     
-    let userDefaultsVC = UserDefaultsTableViewController()
+    let userDefaultsVC = UserDefaultsViewController()
     let realmVC = RealmTableViewController()
     let coreDataVC = CoreDataTableViewController()
     let weatherVC = WeatherTableViewController()
