@@ -9,23 +9,33 @@
 /* Begin PBXBuildFile section */
 		B77062102694744A0008E644 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B770620F2694744A0008E644 /* AppDelegate.swift */; };
 		B77062122694744A0008E644 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77062112694744A0008E644 /* SceneDelegate.swift */; };
-		B77062142694744A0008E644 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77062132694744A0008E644 /* ViewController.swift */; };
-		B77062172694744A0008E644 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B77062152694744A0008E644 /* Main.storyboard */; };
+		B77062142694744A0008E644 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77062132694744A0008E644 /* StartViewController.swift */; };
 		B770621A2694744A0008E644 /* Homework14.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B77062182694744A0008E644 /* Homework14.xcdatamodeld */; };
 		B770621C2694744C0008E644 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B770621B2694744C0008E644 /* Assets.xcassets */; };
 		B770621F2694744C0008E644 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B770621D2694744C0008E644 /* LaunchScreen.storyboard */; };
+		B77062272694A86D0008E644 /* UserDefaultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77062262694A86D0008E644 /* UserDefaultsTableViewController.swift */; };
+		B77062292694A87B0008E644 /* RealmTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77062282694A87B0008E644 /* RealmTableViewController.swift */; };
+		B770622B2694A8900008E644 /* CoreDataTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B770622A2694A8900008E644 /* CoreDataTableViewController.swift */; };
+		B770622D2694A89F0008E644 /* WeatherTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B770622C2694A89F0008E644 /* WeatherTableViewController.swift */; };
+		B77062332694A9570008E644 /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77062322694A9570008E644 /* DataLoader.swift */; };
+		B77062352694A9670008E644 /* RequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77062342694A9670008E644 /* RequestModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		B770620C2694744A0008E644 /* Homework14.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Homework14.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B770620F2694744A0008E644 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B77062112694744A0008E644 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B77062132694744A0008E644 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		B77062162694744A0008E644 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B77062132694744A0008E644 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		B77062192694744A0008E644 /* Homework14.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Homework14.xcdatamodel; sourceTree = "<group>"; };
 		B770621B2694744C0008E644 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B770621E2694744C0008E644 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B77062202694744C0008E644 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B77062262694A86D0008E644 /* UserDefaultsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsTableViewController.swift; sourceTree = "<group>"; };
+		B77062282694A87B0008E644 /* RealmTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmTableViewController.swift; sourceTree = "<group>"; };
+		B770622A2694A8900008E644 /* CoreDataTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataTableViewController.swift; sourceTree = "<group>"; };
+		B770622C2694A89F0008E644 /* WeatherTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTableViewController.swift; sourceTree = "<group>"; };
+		B77062322694A9570008E644 /* DataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoader.swift; sourceTree = "<group>"; };
+		B77062342694A9670008E644 /* RequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,16 +68,53 @@
 		B770620E2694744A0008E644 /* Homework14 */ = {
 			isa = PBXGroup;
 			children = (
+				B770622E2694A8E90008E644 /* Model */,
+				B770622F2694A8F10008E644 /* View */,
+				B77062302694A8F80008E644 /* Controller */,
+				B77062312694A9200008E644 /* Network */,
 				B770620F2694744A0008E644 /* AppDelegate.swift */,
 				B77062112694744A0008E644 /* SceneDelegate.swift */,
-				B77062132694744A0008E644 /* ViewController.swift */,
-				B77062152694744A0008E644 /* Main.storyboard */,
 				B770621B2694744C0008E644 /* Assets.xcassets */,
 				B770621D2694744C0008E644 /* LaunchScreen.storyboard */,
 				B77062202694744C0008E644 /* Info.plist */,
 				B77062182694744A0008E644 /* Homework14.xcdatamodeld */,
 			);
 			path = Homework14;
+			sourceTree = "<group>";
+		};
+		B770622E2694A8E90008E644 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B77062342694A9670008E644 /* RequestModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B770622F2694A8F10008E644 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B77062302694A8F80008E644 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B77062132694744A0008E644 /* StartViewController.swift */,
+				B77062262694A86D0008E644 /* UserDefaultsTableViewController.swift */,
+				B77062282694A87B0008E644 /* RealmTableViewController.swift */,
+				B770622A2694A8900008E644 /* CoreDataTableViewController.swift */,
+				B770622C2694A89F0008E644 /* WeatherTableViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		B77062312694A9200008E644 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				B77062322694A9570008E644 /* DataLoader.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -129,7 +176,6 @@
 			files = (
 				B770621F2694744C0008E644 /* LaunchScreen.storyboard in Resources */,
 				B770621C2694744C0008E644 /* Assets.xcassets in Resources */,
-				B77062172694744A0008E644 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,24 +186,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B770622B2694A8900008E644 /* CoreDataTableViewController.swift in Sources */,
 				B770621A2694744A0008E644 /* Homework14.xcdatamodeld in Sources */,
-				B77062142694744A0008E644 /* ViewController.swift in Sources */,
+				B77062142694744A0008E644 /* StartViewController.swift in Sources */,
 				B77062102694744A0008E644 /* AppDelegate.swift in Sources */,
+				B770622D2694A89F0008E644 /* WeatherTableViewController.swift in Sources */,
+				B77062352694A9670008E644 /* RequestModel.swift in Sources */,
+				B77062272694A86D0008E644 /* UserDefaultsTableViewController.swift in Sources */,
 				B77062122694744A0008E644 /* SceneDelegate.swift in Sources */,
+				B77062292694A87B0008E644 /* RealmTableViewController.swift in Sources */,
+				B77062332694A9570008E644 /* DataLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		B77062152694744A0008E644 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B77062162694744A0008E644 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		B770621D2694744C0008E644 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
