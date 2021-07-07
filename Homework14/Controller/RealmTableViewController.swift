@@ -11,6 +11,7 @@ class RealmTableViewController: UITableViewController {
     
     private let cellID = "realmCell"
     private var realmManager: RealmManagerProtocol = RealmManager()
+    private var editingFlag = false
     private var toDoList: [TaskR] {
         get {
             return realmManager.load()
@@ -27,7 +28,8 @@ class RealmTableViewController: UITableViewController {
         title = "Realm"
         navigationItem.backBarButtonItem?.tintColor = UIColor.white
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellID)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButton(_:)))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButton))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editText))
     }
     
     @objc func addButton(_ sender: Any) {
@@ -48,7 +50,27 @@ class RealmTableViewController: UITableViewController {
         present(alertVC, animated: true, completion: nil)
         self.tableView.reloadData()
     }
-
+    
+    func editTextInCell(_ sender: UITableViewCell, index: Int) {
+        let alertController = UIAlertController(title: "Изменить задачу", message: sender.textLabel?.text, preferredStyle: .alert)
+        let cancelAction = UIAlertAction.init(title: "Отмена", style: .destructive, handler: nil)
+              alertController.addAction(cancelAction)
+              let addAction = UIAlertAction.init(title: "Изменить", style: .default) { (UIAlertAction) -> Void in
+                  let toDoTextField = (alertController.textFields?.first)! as UITextField
+                  let task = self.toDoList[index]
+                  let newTask = toDoTextField.text!
+                  self.realmManager.updateText(object: task, newTask: newTask)
+                  self.tableView.reloadData()
+              }
+              alertController.addTextField { _ in}
+              alertController.addAction(addAction)
+              present(alertController, animated: true, completion: nil)
+    }
+    
+    @objc func editText(_ sender: UITableViewCell) {
+        editingFlag = !editingFlag
+    }
+    
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -80,7 +102,11 @@ class RealmTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let currentTask = toDoList[indexPath.row]
-        realmManager.updateCompletion(object: currentTask)
+        if !editingFlag {
+            realmManager.updateCompletion(object: currentTask)
+        } else {
+            editTextInCell(tableView.cellForRow(at: indexPath)!, index: indexPath.row)
+        }
         tableView.reloadRows(at: [indexPath], with: .automatic)
     }
     

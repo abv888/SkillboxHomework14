@@ -13,6 +13,7 @@ protocol RealmManagerProtocol {
     func load() -> [TaskR]
     func remove(object: TaskR)
     func updateCompletion(object: TaskR)
+    func updateText(object: TaskR, newTask: String)
 }
 
 class RealmManager: RealmManagerProtocol {
@@ -42,6 +43,12 @@ class RealmManager: RealmManagerProtocol {
     func updateCompletion(object: TaskR) {
         try! mainRealm.write {
             object.isCompleted = !object.isCompleted
+        }
+    }
+    
+    func updateText(object: TaskR, newTask: String) {
+        try! mainRealm.write {
+            object.task = newTask
         }
     }
 
