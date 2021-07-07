@@ -6,28 +6,20 @@
 //
 
 import UIKit
-import RealmSwift
-
-class TaskR: Object {
-    @objc dynamic var task: String = ""
-    @objc dynamic var isCompleted = false
-}
 
 class RealmTableViewController: UITableViewController {
     
     private let cellID = "realmCell"
-    private var realm: Realm!
-    
-    private var toDoList: Results<TaskR> {
+    private var realmManager: RealmManagerProtocol = RealmManager()
+    private var toDoList: [TaskR] {
         get {
-            return realm.objects(TaskR.self)
+            return realmManager.load()
         }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        realm = try! Realm()
     }
     
     private func setupView() {
@@ -48,10 +40,9 @@ class RealmTableViewController: UITableViewController {
             let newTask = TaskR()
             newTask.task = toDoTextField.text!
             newTask.isCompleted = false
-            try! self.realm.write({
-                self.realm.add(newTask)
-                self.tableView.insertRows(at: [IndexPath.init(row: self.toDoList.count - 1, section: 0)], with: .automatic)
-            })
+            self.realmManager.save(task: newTask)
+            self.tableView.insertRows(at: [IndexPath.init(row: self.toDoList.count - 1, section: 0)], with: .automatic)
+        
         }
         alertVC.addAction(addAction)
         present(alertVC, animated: true, completion: nil)
@@ -81,9 +72,7 @@ class RealmTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let currentTask = toDoList[indexPath.row]
-            try! self.realm.write({
-                self.realm.delete(currentTask)
-            })
+            realmManager.remove(object: currentTask)
             self.tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
@@ -91,9 +80,7 @@ class RealmTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let currentTask = toDoList[indexPath.row]
-        try! self.realm.write({
-            currentTask.isCompleted = !currentTask.isCompleted
-        })
+        realmManager.updateCompletion(object: currentTask)
         tableView.reloadRows(at: [indexPath], with: .automatic)
     }
     

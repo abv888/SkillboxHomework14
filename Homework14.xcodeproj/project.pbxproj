@@ -26,6 +26,9 @@
 		B77062422694F4310008E644 /* WeatherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77062402694F4310008E644 /* WeatherTableViewCell.swift */; };
 		B77062432694F4310008E644 /* WeatherTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B77062412694F4310008E644 /* WeatherTableViewCell.xib */; };
 		B77062462694FA410008E644 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = B77062452694FA410008E644 /* Kingfisher */; };
+		B77062482695CD7B0008E644 /* TaskR.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77062472695CD7B0008E644 /* TaskR.swift */; };
+		B770624A2695CE070008E644 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77062492695CE070008E644 /* RealmManager.swift */; };
+		B770624C2695DEFD0008E644 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B770624B2695DEFD0008E644 /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +49,9 @@
 		B77062362694E31D0008E644 /* UserDefaultsPesistanceContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsPesistanceContainer.swift; sourceTree = "<group>"; };
 		B77062402694F4310008E644 /* WeatherTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTableViewCell.swift; sourceTree = "<group>"; };
 		B77062412694F4310008E644 /* WeatherTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherTableViewCell.xib; sourceTree = "<group>"; };
+		B77062472695CD7B0008E644 /* TaskR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskR.swift; sourceTree = "<group>"; };
+		B77062492695CE070008E644 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		B770624B2695DEFD0008E644 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +107,9 @@
 			isa = PBXGroup;
 			children = (
 				B77062342694A9670008E644 /* RequestModel.swift */,
+				B77062472695CD7B0008E644 /* TaskR.swift */,
+				B77062492695CE070008E644 /* RealmManager.swift */,
+				B770624B2695DEFD0008E644 /* CoreDataManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -218,14 +227,17 @@
 				B77062422694F4310008E644 /* WeatherTableViewCell.swift in Sources */,
 				B770622B2694A8900008E644 /* CoreDataTableViewController.swift in Sources */,
 				B770621A2694744A0008E644 /* Homework14.xcdatamodeld in Sources */,
+				B770624C2695DEFD0008E644 /* CoreDataManager.swift in Sources */,
 				B77062142694744A0008E644 /* StartViewController.swift in Sources */,
 				B77062102694744A0008E644 /* AppDelegate.swift in Sources */,
 				B77062372694E31D0008E644 /* UserDefaultsPesistanceContainer.swift in Sources */,
 				B770622D2694A89F0008E644 /* WeatherTableViewController.swift in Sources */,
 				B77062352694A9670008E644 /* RequestModel.swift in Sources */,
 				B77062272694A86D0008E644 /* UserDefaultsViewController.swift in Sources */,
+				B77062482695CD7B0008E644 /* TaskR.swift in Sources */,
 				B77062122694744A0008E644 /* SceneDelegate.swift in Sources */,
 				B77062292694A87B0008E644 /* RealmTableViewController.swift in Sources */,
+				B770624A2695CE070008E644 /* RealmManager.swift in Sources */,
 				B77062332694A9570008E644 /* DataLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

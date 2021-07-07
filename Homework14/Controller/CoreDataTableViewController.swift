@@ -6,21 +6,23 @@
 //
 
 import UIKit
-import CoreData
 
 class CoreDataTableViewController: UITableViewController {
     
+    private let coreDataManager: CoreDataManagerProtocol = CoreDataManager()
+    
     private let cellID = "CoreDataCell"
-    private var tasks = [Task]()
-    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    private var tasks: [Task] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        loadTasksCD()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        tasks = coreDataManager.load()
+        tableView.reloadData()
     }
     
     private func setupView() {
@@ -35,36 +37,16 @@ class CoreDataTableViewController: UITableViewController {
         let cancelAction = UIAlertAction.init(title: "Отмена", style: .destructive, handler: nil)
         alertController.addAction(cancelAction)
         let addAction = UIAlertAction.init(title: "Добавить", style: .default) { (UIAlertAction) -> Void in
-        let toDoTextField = (alertController.textFields?.first)! as UITextField
-        let newTask = Task(context: self.context)
-        newTask.text = toDoTextField.text!
-        self.tasks.append(newTask)
-        self.saveTaskToCD()
+            let toDoTextField = (alertController.textFields?.first)! as UITextField
+            let newTask = Task(context: CoreDataManager.shared.context)
+            newTask.text = toDoTextField.text!
+            self.tasks.append(newTask)
+            self.coreDataManager.save()
+            self.tableView.reloadData()
         }
         alertController.addTextField { _ in}
         alertController.addAction(addAction)
         present(alertController, animated: true, completion: nil)
-    }
-    
-    func saveTaskToCD() {
-        
-        do {
-            try context.save()
-        } catch  {
-            print("Error saving - \(error)")
-        }
-        self.tableView.reloadData()
-        //print("____________saved______________")
-    }
-    
-    func loadTasksCD() {
-        let request: NSFetchRequest<Task> = Task.fetchRequest()
-        do {
-            tasks = try context.fetch(request)
-        } catch {
-            print("Error fetching - \(error)")
-        }
-        self.tableView.reloadData()
     }
 
     // MARK: - Table view data source
@@ -85,7 +67,8 @@ class CoreDataTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.tableView.deselectRow(at: indexPath, animated: true)
         tasks[indexPath.row].isCompleted = !tasks[indexPath.row].isCompleted
-        saveTaskToCD()
+        coreDataManager.save()
+        tableView.reloadData()
     }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -96,13 +79,10 @@ class CoreDataTableViewController: UITableViewController {
         if (editingStyle == .delete) {
             let item = tasks[indexPath.row]
             tasks.remove(at: indexPath.row)
-            context.delete(item)
-            do {
-                try context.save()
-            } catch {
-                print("Delete error - \(error)")
-            }
-            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            coreDataManager.remove(task: item)
+            coreDataManager.save()
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            tableView.reloadData()
         }
     }
     
