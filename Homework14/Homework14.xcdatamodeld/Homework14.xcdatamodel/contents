@@ -4,8 +4,16 @@
         <attribute name="isCompleted" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="text" attributeType="String"/>
     </entity>
+    <entity name="WeatherCD" representedClassName="WeatherCD" syncable="YES" codeGenerationType="class">
+        <attribute name="date" optional="YES" attributeType="String"/>
+        <attribute name="icon" optional="YES" attributeType="String" allowsExternalBinaryDataStorage="YES"/>
+        <attribute name="index" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="temperature" optional="YES" attributeType="String"/>
+        <attribute name="time" optional="YES" attributeType="String"/>
+    </entity>
     <fetchRequest name="FetchRequest" entity="Task"/>
     <elements>
         <element name="Task" positionX="-63" positionY="-18" width="128" height="59"/>
+        <element name="WeatherCD" positionX="-36" positionY="27" width="128" height="104"/>
     </elements>
 </model>
